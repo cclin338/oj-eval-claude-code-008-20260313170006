@@ -1,0 +1,69 @@
+# 2282 - sort
+# Read 5 digits and output in ascending order using bubble sort
+
+# Read 5 digits
+[0]<I
+[1]<I
+[2]<I
+[3]<I
+[4]<I
+
+# Bubble sort: 4 passes
+# Each pass: compare adjacent and swap if needed
+
+# Helper: To check if [X] > [Y], use memory trick
+# Set mem[0-9] based on value ranges
+
+# Decrement table (to go from ASCII to digit value)
+# Actually, let's work directly with ASCII values
+
+# Comparison and swap macro:
+# If [i] > [i+1], swap them
+# To compare: check if [i] > [i+1]
+#   Can use trick: mem[[i+1]] = 1, check mem[[i]]
+
+# Let me try different approach:
+# For ASCII '0'-'9' (48-57), we can compare directly
+# If A > B, then mem[B] won't have marker at position A
+
+# I'll use memory 100-109 as staging area for digit markers
+
+# Pass 1: Compare (0,1), (1,2), (2,3), (3,4)
+# Compare [0] and [1], swap if [0] > [1]
+
+# Set marker at [1]'s value
+A<[1]
+[A]<99
+
+# Check if [0]'s value has marker
+B<[0]
+C<[B]
+
+# If C == 0, then [0] != [1] and [0] has no marker
+# We need to determine if [0] < [1] or [0] > [1]
+# If [0] > [1], then [0]'s ASCII value > [1]'s ASCII value
+
+# Let me use a more systematic approach
+# Compare by checking all digits in order
+
+# For digits only, I can use 10 fixed is memory slots
+# Map digit '0'-'9' to positions 48-57
+
+# Very simple approach: Try all 120 permutations and output the sorted one!
+# But that's crazy...
+
+# Practical bubble sort with fixed swaps:
+# Compare [0] and [1]: if [0] > [1], swap
+
+# Comparison: Given A and B, determine if A > B
+# Method: Set mem[0..255] = 0
+#         Set mem[B] = 1
+#         Check mem[A]: if 1, A==B; if 0, A!=B
+#         Then check ranges...
+
+# This is too hard. Let me just implement a working version
+# using memory-based comparison
+
+# Setup: For comparison, I'll use offset 300
+# mem[300 + X] will hold comparison result for X
+

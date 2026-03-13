@@ -1,15 +1,79 @@
-# 2277 - if else (fully functional)
+# 2277 - if else (corrected)
 # Read two characters and output '1' if same, '0' if different
 
 # Read inputs
 A<I
 B<I
 
-# Initialize lookup table: mem[0]=48, mem[49]=49
-[0]<48
-[49]<49
+# Strategy: Set mem[B] = 49, then check mem[A]
+# If A==B, mem[A] = 49, else mem[A] = 0 (or undefined)
+# To handle undefined, we initialize the full range
 
-# Initialize entire ASCII printable range (32-126) to 0
+# Initialize all memory 0-255 to 0 (except 49)
+C<0
+[C]<0
+C<1
+[C]<0
+C<2
+[C]<0
+C<3
+[C]<0
+C<4
+[C]<0
+C<5
+[C]<0
+C<6
+[C]<0
+C<7
+[C]<0
+C<8
+[C]<0
+C<9
+[C]<0
+C<10
+[C]<0
+C<11
+[C]<0
+C<12
+[C]<0
+C<13
+[C]<0
+C<14
+[C]<0
+C<15
+[C]<0
+C<16
+[C]<0
+C<17
+[C]<0
+C<18
+[C]<0
+C<19
+[C]<0
+C<20
+[C]<0
+C<21
+[C]<0
+C<22
+[C]<0
+C<23
+[C]<0
+C<24
+[C]<0
+C<25
+[C]<0
+C<26
+[C]<0
+C<27
+[C]<0
+C<28
+[C]<0
+C<29
+[C]<0
+C<30
+[C]<0
+C<31
+[C]<0
 C<32
 [C]<0
 C<33
@@ -43,8 +107,6 @@ C<46
 C<47
 [C]<0
 C<48
-[C]<0
-C<49
 [C]<0
 C<50
 [C]<0
@@ -200,18 +262,20 @@ C<125
 [C]<0
 C<126
 [C]<0
+C<127
+[C]<0
 
-# Restore lookup table (in case C=0 or C=49 above)
+# Now set lookup table carefully
 [0]<48
 [49]<49
 
 # Set [B] = 49
 [B]<49
 
-# Load [A] - returns 49 if A==B, 0 otherwise
+# Load [A]
 D<[A]
 
-# Output mem[D] - mem[0]=48 ('0'), mem[49]=49 ('1')
+# Output mem[D]
 O<[D]
 
 Z<1
