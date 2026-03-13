@@ -1,0 +1,19 @@
+# 2276 - Hello World!
+# Output: Hello World!
+
+# H=72, e=101, l=108, o=111, space=32, W=87, r=114, d=100, !=33
+
+O<72    # H
+O<101   # e
+O<108   # l
+O<108   # l
+O<111   # o
+O<32    # space
+O<87    # W
+O<111   # o
+O<114   # r
+O<108   # l
+O<100   # d
+O<33    # !
+
+Z<1     # Halt
