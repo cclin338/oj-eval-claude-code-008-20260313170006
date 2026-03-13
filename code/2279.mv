@@ -1,0 +1,19 @@
+# 2279 - echo
+# Read any number of characters and output them exactly
+# Hint: After input stream ends, input is all 0
+
+# Initialize mem[0] = 1 to detect end of input
+[0]<1
+
+# Read input character
+A<I
+
+# Check if A == 0 (end of input)
+# Load mem[A] - if A==0, gets 1, otherwise 0
+Z<[A]
+
+# Output A (this executes even if Z is set, but halt happens after current cycle)
+O<A
+
+# Program loops back to start
+# When A==0, Z was set to 1, so it will halt
